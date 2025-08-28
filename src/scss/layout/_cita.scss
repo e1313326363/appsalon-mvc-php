@@ -1,0 +1,20 @@
+
+.seccion {
+    padding: 5rem 0;
+    display: none;
+
+    .text-center {
+        text-align: center;
+    }
+}
+
+.mostrar {
+    display: block;
+}
+.ocultar {
+    display: none;
+}
+.swal2-popup {
+  font-size: 1.6rem !important;
+  font-family: Georgia, serif;
+}

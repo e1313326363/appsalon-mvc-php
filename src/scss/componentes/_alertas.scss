@@ -1,0 +1,19 @@
+@use 'base/variables' as v;
+.alerta {
+    padding: calc(v.$separacion / 4);
+    color: v.$blanco;
+    max-width: 68rem; // o el tamaño que desees
+    margin: 0 auto 2rem auto; // centrar la alerta
+    display: block;
+    text-align: center;
+    font-weight: v.$bold;
+    text-transform: uppercase;
+
+    &.error {
+        background-color: v.$rojo;
+    }
+    &.exito{
+        background-color: v.$verde;
+    }
+
+}
