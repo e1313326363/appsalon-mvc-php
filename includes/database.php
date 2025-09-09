@@ -4,7 +4,7 @@ require __DIR__ . '/../vendor/autoload.php'; // Ajusta la ruta si tu vendor est�
 use Dotenv\Dotenv;
 
 // Crear instancia apuntando a la raíz del proyecto
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad(); // safeLoad() evita errores si no existe .env
 
 // Conexión a la base de datos
@@ -20,6 +20,9 @@ if (!$db) {
     echo "errno de depuración: " . mysqli_connect_errno();
     echo "error de depuración: " . mysqli_connect_error();
     exit;
+}
+if ($db) {
+    echo "Conexión a la base de datos exitosa.";
 }
 
 $db->set_charset('utf8');
