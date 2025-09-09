@@ -24,35 +24,22 @@ class Email
     }
 
     private function configurarMail()
-    {
-        $mail = new PHPMailer(true);
+{
+    $mail = new PHPMailer(true);
 
-        try {
-            $mail->isSMTP();
-            $mail->SMTPAuth = true;
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // TLS
+    try {
+        $mail->isMail(); // usa la función mail() de PHP en lugar de SMTP
+        $mail->setFrom('no-reply@appsalon.com', 'AppSalon');
+        $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
 
-            // Leer variables con getenv() en lugar de $_ENV
-            $mail->Host = getenv('EMAIL_HOST') ?: '';
-            $mail->Username = getenv('EMAIL_USER') ?: '';
-            $mail->Password = getenv('EMAIL_PASS') ?: '';
-            $mail->Port = intval(getenv('EMAIL_PORT') ?: 2525);
+        return $mail;
 
-            $mail->setFrom('no-reply@appsalon.com', 'AppSalon');
-            $mail->isHTML(true);
-            $mail->CharSet = 'UTF-8';
-
-            // Debug SMTP (0=off)
-            $mail->SMTPDebug = 0;
-            $mail->Debugoutput = 'html';
-
-            return $mail;
-
-        } catch (Exception $e) {
-            error_log("Error al configurar PHPMailer: " . $e->getMessage());
-            return null;
-        }
+    } catch (Exception $e) {
+        error_log("Error al configurar PHPMailer: " . $e->getMessage());
+        return null;
     }
+}
 
     public function enviarConfirmacion()
     {
